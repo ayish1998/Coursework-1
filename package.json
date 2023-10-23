@@ -1,0 +1,25 @@
+{
+  "name": "coursework-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "css": "npx tailwindcss -i ./views/input.css -o ./public/output.css --watch",
+    "dev": "concurrently \"npm:server\" \"npm:css\"",
+    "server": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "flowbite": "^1.8.1",
+    "mustache-express": "^1.3.2",
+    "nedb": "^1.8.0",
+    "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1",
+    "tailwindcss": "^3.3.3"
+  }
+}
