@@ -18,7 +18,9 @@
 
 </head>
 
+
 <body>
+
     <!--Nav bar starts here-->
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-blue-800 dark:border-gray-700"
         style="width: 100%;">
@@ -86,6 +88,7 @@
             </div>
         </div>
     </nav>
+
     <!--Sidebar starts here-->
     <aside id="logo-sidebar"
         class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
@@ -225,74 +228,8 @@
         </div>
     </aside>
 
-    <!--Create event form starts here-->
-    <form action="#" id="event-form">
-        <section class="bg-blue-100 pt-16">
-            <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-                <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-black">Create Event</h2>
-                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                    <div class="sm:col-span-2">
-                        <label for="name" class="block mb-4 text-xl font-medium text-gray-900 dark:text-blue-500">Event
-                            Title</label>
-                        <input type="text" name="name" id="name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary1-600 focus:border-primary1-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary1-500 dark:focus:border-primary1-500"
-                            placeholder="Title" required="">
-                    </div>
-                    <div>
-                        <label for="category"
-                            class="block mb-4 text-xl font-medium text-gray-900 dark:text-blue-500">Event
-                            Category</label>
-                        <select id="category"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary1-500 focus:border-primary1-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary1-500 dark:focus:border-primary1-500">
-                            <option selected="">Select category</option>
-                            <option value="PD">Professional Development</option>
-                            <option value="NT">Networking</option>
-                            <option value="CE">Campus Event</option>
-                            <option value="CF">Career Fair</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="event-type"
-                            class="block mb-4 text-xl font-medium text-gray-900 dark:text-blue-500">Event Type</label>
-                        <select id="event-type"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary1-500 focus:border-primary1-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary1-500 dark:focus:border-primary1-500">
-                            <option selected="">Select type</option>
-                            <option value="F">Free</option>
-                            <option value="SP">Sponsored</option>
-                        </select>
-                    </div>
 
-                    <div>
-                        <label for="date-time"
-                            class="block mb-4 text-xl font-medium text-gray-900 dark:text-blue-500">Date
-                            & Time</label>
-                        <input type="datetime-local" name="date-time" id="date-time"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary1-600 focus:border-primary1-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary1-500 dark:focus:border-primary1-500"
-                            required="">
-                    </div>
-                    <div>
-                        <label for="location"
-                            class="block mb-4 text-xl font-medium text-gray-900 dark:text-blue-500">Location</label>
-                        <input type="text" name="location" id="location" placeholder="Write location..."
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary1-600 focus:border-primary1-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary1-500 dark:focus:border-primary1-500"
-                            required="">
-                    </div>
-
-                    <div class="sm:col-span-2">
-                        <label for="description"
-                            class="block mb-4 text-xl font-medium text-gray-900 dark:text-blue-500">Description</label>
-                        <textarea id="description" rows="8"
-                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary1-500 focus:border-primary1-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary1-500 dark:focus:border-primary1-500"
-                            placeholder="Write description..."></textarea>
-                    </div>
-                </div>
-                <button type="submit"
-                    class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-xl font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-primary1-200 dark:focus:ring-primary1-900 hover:bg-blue-600">Publish
-                    Now</button>
-            </div>
-        </section>
-    </form>
-
+    <!--Main content starts here-->
 
 
 
@@ -318,11 +255,15 @@
             document.getElementById('event-form').style.display = 'block';
         }
     </script>
+    </script>
+
 
     <!--Flowbite js-->
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+
+
 </body>
 
 </html>
