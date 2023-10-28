@@ -1,23 +1,27 @@
-const Datastore = require('nedb');
-const userDB = new Datastore({ filename: 'db/user.db', corruptAlertThreshold: 1, autoload: true });
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
+const userSchema = new Schema({
+    username: {
+        type: String,
+        required: true
+    },
 
-// Insert a new document
-// const dataToInsert = {
-//     name: 'Debs',
-//     age: 34,
-//     school: 'Agartha International',
-//     status: 'married'
-// }
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    role: String,
+    date: {
+        type: String,
+        default: Date.now()
+    }
+}, { timestamps: true });
 
-// userDB.insert(dataToInsert, (err, data) => {
-//     if(err) {
-//         return console.log({error: err})
-//     }
+const User = mongoose.model("User", userSchema);    // User is the name of the collection in the database
 
-//     console.log({message: 'data inserted successfully', data});
-// })
-
-
-module.exports = userDB;
-
+module.exports = User;

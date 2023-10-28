@@ -1,9 +1,17 @@
-//dashboard toggle
-function toggleFormVisibility() {
-    var form = document.getElementById('event-form');
-    if (form.style.display === 'none' || form.style.display === '') {
-      form.style.display = 'block';
-    } else {
-      form.style.display = 'none';
-    }
+const postForm = document.getElementById('post-form');
+
+postForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(postForm);
+  const response = await fetch('/submit', {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (response.ok) {
+    // Handle success, e.g., display a success message
+  } else {
+    // Handle error, e.g., display an error message
   }
+});
