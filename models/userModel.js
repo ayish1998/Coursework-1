@@ -2,26 +2,37 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: {
+    fullName: {
         type: String,
         required: true
     },
 
-    email: {
+    yearGroup: {
         type: String,
         required: true
     },
-    password: {
+    PhoneNumber: {
         type: String,
         required: true
     },
-    role: String,
-    date: {
+    CurrentAddress: {
         type: String,
-        default: Date.now()
+        required: true
+    },
+    EmailAddress: {
+        type: String,
+        required: true
+    },
+    Password: {
+        type: String,
+        required: true
+    },
+    password_confirmation: {
+        type: String,
+        required: true
     }
-}, { timestamps: true });
 
-const User = mongoose.model("User", userSchema);    // User is the name of the collection in the database
+});
 
-module.exports = User;
+
+module.exports = mongoose.model("User", userSchema);

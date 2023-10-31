@@ -184,7 +184,7 @@
                                     In</a>
                             </h4>
                         </div>
-                        <form action="#" method="POST">
+                        <form action="/admin" method="POST">
                             <input type="hidden">
                             <div class="form-wrap pb-6">
                                 <!-- Full Name Field -->
@@ -197,26 +197,26 @@
                                     </label>
                                     <input type="text"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        id="fullName" name="name" placeholder="Full Name" required>
+                                        id="fullName" name="fullName" placeholder="Full Name" required>
                                 </div>
                                 <!-- Batch Name Field -->
                                 <div class="relative mb-12">
-                                    <label for="BatchName" class="form-label"><span
+                                    <label for="yearGroup" class="form-label"><span
                                             class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                                            Batch Name
+                                            Year Group
                                         </span></label>
                                     <select
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        id="BatchName" name="batch_id">
+                                        id="yearGroup" name="yearGroup">
                                         <option value="" selected>Select Batch</option>
-                                        <option value="1">2014</option>
-                                        <option value="2">2015</option>
-                                        <option value="2">2016</option>
-                                        <option value="2">2017</option>
-                                        <option value="2">2018</option>
-                                        <option value="2">2019</option>
-                                        <option value="2">2020</option>
-                                        <option value="2">2021</option>
+                                        <option value="2014">2014</option>
+                                        <option value="2014">2015</option>
+                                        <option value="2015">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
                                     </select>
                                 </div>
                                 <!-- Phone Number Field -->
@@ -227,7 +227,7 @@
                                         </span></label>
                                     <input type="text"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        id="PhoneNumber" name="mobile" placeholder="eg: (+880) 1754936599" required>
+                                        id="PhoneNumber" name="PhoneNumber" placeholder="eg: (+880) 1754936599" required>
                                 </div>
                                 <!-- Email Address Field -->
                                 <div class="relative mb-12">
@@ -237,78 +237,18 @@
                                         </span></label>
                                     <input type="email"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        id="EmailAddress" name="email" placeholder="example@example.com" required>
+                                        id="EmailAddress" name="EmailAddress" placeholder="example@example.com" required>
                                 </div>
-                                <!-- Department Field -->
+                                <!-- Current Address Field -->
                                 <div class="relative mb-12">
-                                    <label for="Department" class="form-label"><span
+                                    <label for="CurrentAddress" class="form-label"><span
                                             class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                                            Department
-                                        </span></label>
-                                    <select
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        id="Department" name="department_id">
-                                        <option value="" selected>Select Department</option>
-                                        <option value="1">Business</option>
-                                        <option value="2">Social Science</option>
-                                        <option value="3">Computing</option>
-                                        <option value="4">Engineering</option>
-                                        <option value="5"> BEL</option>
-                                    </select>
-                                </div>
-                                <!-- Passing Year Field -->
-                                <div class="relative mb-12">
-                                    <label for="PassingYear" class="form-label"><span
-                                            class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                                            Passing Year
-                                        </span></label>
-                                    <select
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        id="PassingYear" name="passing_year_id">
-                                        <option value="" selected>Select Passing Year</option>
-                                        <option value="1">2014</option>
-                                        <option value="2">2015</option>
-                                        <option value="2">2016</option>
-                                        <option value="2">2017</option>
-                                        <option value="2">2018</option>
-                                        <option value="2">2019</option>
-                                        <option value="2">2020</option>
-                                        <option value="2">2021</option>
-                                    </select>
-                                </div>
-                                <!-- ID/Roll Number Field -->
-                                <div class="relative mb-12">
-                                    <label for="rollNumber" class="form-label"><span
-                                            class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                                            ID/Roll Number
+                                            Current Address
                                         </span></label>
                                     <input type="text"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        id="rollNumber" name="id_number" placeholder="Your ID/Roll number" required>
-                                </div>
-                                <!-- Birth Date Field -->
-                                <div class="relative mb-12">
-                                    <label for="BirthDate" class="form-label"><span
-                                            class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                                            Birth Date
-                                        </span></label>
-                                    <input type="date"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        id="BirthDate" name="date_of_birth" required>
-                                </div>
-                                <!-- Gender Field -->
-                                <div class="relative mb-12">
-                                    <label for="Gender" class="form-label"><span
-                                            class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                                            Gender
-                                        </span>
-                                        <select
-                                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                            id="Gender" name="gender">
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">Other</option>
-                                        </select>
+                                        id="CurrentAddress" name="CurrentAddress" placeholder="Current Address"
+                                        required>
                                 </div>
                                 <!-- Password Field -->
                                 <div class="relative mb-12">
@@ -318,7 +258,7 @@
                                         </span></label>
                                     <input type="password"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        id="Password" name="password" placeholder="********" required>
+                                        id="Password" name="Password" placeholder="********" required>
                                 </div>
                                 <!-- Confirm Password Field -->
                                 <div class="relative mb-6">

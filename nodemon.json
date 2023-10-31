@@ -1,0 +1,9 @@
+{
+    "ext": "js,json,html,css",
+    "ignore": ["node_modules/"],
+    "verbose": true,
+    "execMap": {
+      "js": "node --harmony"
+    }
+  }
+  

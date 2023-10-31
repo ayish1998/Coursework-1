@@ -3,9 +3,17 @@ const router = express.Router();
 const path = require("path");
 
 router.get("/", (req, res) => {
-  res.render("dashboard", { title: "Welcome back Alumni" });
+  res.sendFile(path.join(__dirname, "../public", "pages", "dashboard.html"));
 });
 
+
+router.get("/create-event", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public", "pages", "create-event.html"));
+});
+
+router.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public", "pages", "admin.html"));
+});
 
 router.get("/all-event", (req, res) => {
   // console.log("Request to /login");
