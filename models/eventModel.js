@@ -9,7 +9,7 @@ const eventSchema = new Schema({
     ,
     category: {
         type: String,
-        enum: ['Campus Event', 'Professional Event', 'Networking Event'],
+        enum: ['Select Category','Campus Event', 'Professional Event', 'Networking Event'],
         required: true
     },
     type: {
