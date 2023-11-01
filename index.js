@@ -60,8 +60,8 @@ app.use("/contact", contactRoutes);
 app.use("/dashboard", dashboardRoutes);
 
 
-app.use("/admin", userRoutes); // use user routes")
-app.use("/alumni-event", eventRoutes); // use event routes")
+app.use("/admin", userRoutes); // use user routes"
+app.use("/alumni-event", eventRoutes); // use event routes"
 
 
 

@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    html{
+        @apply relative min-h-screen;
+    }
+  body {
+    @apply overflow-x-hidden;
+
+  }
+}   

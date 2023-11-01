@@ -1,9 +1,11 @@
 {
-    "ext": "js,json,html,css",
-    "ignore": ["node_modules/"],
-    "verbose": true,
-    "execMap": {
-      "js": "node --harmony"
-    }
-  }
-  
+  "watch": [
+    "index.js",
+    "views/",
+    "lib/",
+    "controllers/",
+    "routes/",
+    "models/"
+  ],
+  "ext": "js, css, mustache, html"
+}

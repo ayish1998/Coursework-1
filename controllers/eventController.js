@@ -1,5 +1,6 @@
 const Event = require("../models/eventModel");
 
+
 // Create a new event
 const createEvent = (req, res) => {
     const eventData = req.body;
@@ -16,14 +17,37 @@ const createEvent = (req, res) => {
 };
 
 
+// const formattedDate = new Date(event.datetime).toDateString();
+//             const formattedTime = new Date(event.datetime).toLocaleTimeString("en-US", {
+//                 timeZone: "UTC",
+//                 hour12: false,
+//                 hour: "numeric",
+//                 minute: "numeric",
+//             });
+//             const eventData = {
+//                 ...event,
+//                 formattedDate,
+//                 formattedTime,
+//             };
 
 // Get all users
 const getAllEvents = (req, res) => {
     Event.find({})
-        .then((event) => {
-            console.log(event);
+        .then((events) => {
             // Render the "dashboard" template and pass the user data to it
-            res.render("my-event", { EventData: event});
+            const formattedEvents = events.map((event) => {
+                const formattedDate = new Date(event.datetime).toDateString();
+                const formattedTime = new Date(event.datetime).toLocaleTimeString("en-US", {
+                    timeZone: "UTC",
+                    hour12: false,
+                    hour: "numeric",
+                    minute: "numeric",
+                });
+
+                return { ...event._doc, formattedDate, formattedTime }
+            })
+            console.log(formattedEvents);
+            res.render("my-event", { EventData: formattedEvents });
         })
         .catch((err) => {
             console.error(err);
@@ -31,8 +55,24 @@ const getAllEvents = (req, res) => {
         });
 }
 
+const updateEvent = (req, res) => {
+    const eventData = req.body;
+    Event.findOneAndUpdate({ _id: req.params.id }, eventData, { new: true })
+        .then((event) => {
+            console.log({ message: 'Event updated successfully', event });
+            res.redirect('/alumni-event');
+        })
+        .catch((err) => {
+            console.error('An error occurred while updating the event:');
+            console.error(err);
+            res.status(500).send('Error updating event; please try again.');
+        });
+
+};
+
 module.exports = {
     createEvent,
-    getAllEvents
+    getAllEvents,
+    updateEvent
 };
 
