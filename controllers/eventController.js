@@ -16,20 +16,6 @@ const createEvent = (req, res) => {
         });
 };
 
-
-// const formattedDate = new Date(event.datetime).toDateString();
-//             const formattedTime = new Date(event.datetime).toLocaleTimeString("en-US", {
-//                 timeZone: "UTC",
-//                 hour12: false,
-//                 hour: "numeric",
-//                 minute: "numeric",
-//             });
-//             const eventData = {
-//                 ...event,
-//                 formattedDate,
-//                 formattedTime,
-//             };
-
 // Get all users
 const getAllEvents = (req, res) => {
     Event.find({})
@@ -54,7 +40,7 @@ const getAllEvents = (req, res) => {
             res.status(500).send('Error retrieving data');
         });
 }
-
+// Update an event
 const updateEvent = (req, res) => {
     const eventData = req.body;
     Event.findOneAndUpdate({ _id: req.params.id }, eventData, { new: true })
@@ -74,9 +60,24 @@ const updateEvent = (req, res) => {
 
 };
 
+//delete an event
+const deleteEvent = (req, res) => {
+    Event.findOneAndDelete({ _id: req.params.id })
+        .then((event) => {
+            console.log({ message: 'Event deleted successfully', event });
+            res.redirect('/alumni-event');
+        })
+        .catch((err) => {
+            console.error('An error occurred while deleting the event:');
+            console.error(err);
+            res.status(500).send('Error deleting event; please try again.');
+        });
+};
+
 module.exports = {
     createEvent,
     getAllEvents,
-    updateEvent
+    updateEvent,
+    deleteEvent
 };
 
