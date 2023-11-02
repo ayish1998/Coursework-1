@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const mongoose = require("mongoose"); // require mongoose
-
+const flash = require('flash-express');// require flash
+ const session = require('express-session');// require session
 
 
 // require mustache
@@ -47,6 +48,17 @@ app.use(express.static(public));
 //json format and ulr encoded data
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+//flash middleware
+app.use(flash());
+
+//session middleware
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true
+}));
+
 
 
 

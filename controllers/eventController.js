@@ -7,7 +7,7 @@ const createEvent = (req, res) => {
     Event.create(eventData)
         .then((event) => {
             console.log({ message: 'Event created successfully', event });
-            res.redirect('/dashboard/create-event');
+            res.redirect('/alumni-event');
         })
         .catch((err) => {
             console.error('An error occurred while creating the event:');
@@ -60,6 +60,10 @@ const updateEvent = (req, res) => {
     Event.findOneAndUpdate({ _id: req.params.id }, eventData, { new: true })
         .then((event) => {
             console.log({ message: 'Event updated successfully', event });
+            res.flash("Event updated successfully", {
+                position: "r",
+                duration: "3000",
+            });
             res.redirect('/alumni-event');
         })
         .catch((err) => {
