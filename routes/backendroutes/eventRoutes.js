@@ -6,7 +6,7 @@ const { createEvent, getAllEvents, updateEvent,deleteEvent } = require("../../co
 router.post("/", createEvent);
 router.get("/", getAllEvents);
 router.post("/events/:id/update", updateEvent);
-router.post("/alumni-event/events/:id/delete", deleteEvent);
+router.post("/delete/:id", deleteEvent);
 
 
 module.exports = router;

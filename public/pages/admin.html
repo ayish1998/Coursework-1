@@ -245,34 +245,36 @@
 
 
 
-    <!--Dashboard js-->
-    <script>
-        // Function to toggle the form visibility
-        function toggleFormVisibility() {
-            var form = document.getElementById('event-form');
-            if (form.style.display === 'none' || form.style.display === '') {
-                form.style.display = 'block';
-            } else {
-                form.style.display = 'none';
-            }
-
-            // Store the visibility state in local storage
-            localStorage.setItem('eventFormVisible', form.style.display);
-        }
-
-        // Check if the form should be visible on page load
-        var savedFormVisibility = localStorage.getItem('eventFormVisible');
-        if (savedFormVisibility === 'block') {
-            document.getElementById('event-form').style.display = 'block';
-        }
-    </script>
-
     <!--Flowbite js-->
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 
     <script src="../JS/admin.js"></script>
+    
+   <!--Dashboard js-->
+   <script>
+    // Function to toggle the form visibility
+    function toggleFormVisibility() {
+        const form = document.getElementById('event-form');
+        if (form.style.display === 'none' || form.style.display === '') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+
+        // Store the visibility state in local storage
+        localStorage.setItem('eventFormVisible', form.style.display);
+    }
+
+    // Check if the form should be visible on page load
+    const savedFormVisibility = localStorage.getItem('eventFormVisible');
+    if (savedFormVisibility === 'block') {
+        document.getElementById('event-form').style.display = 'block';
+    }
+</script>
+  
+
 </body>
 
 </html>

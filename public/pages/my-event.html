@@ -296,59 +296,68 @@
 
     <!-- Create event form ends here -->
 
-        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl" id="event-card">
-            <div class="md:flex">
-                <div class="md:flex-shrink-0">
-                    <img class="h-48 w-full object-cover md:w-48" src="https://source.unsplash.com/random" alt="Event Image">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl" id="event-card">
+        <div class="md:flex">
+            <div class="md:flex-shrink-0">
+                <img class="h-48 w-full object-cover md:w-48" src="https://source.unsplash.com/random"
+                    alt="Event Image">
+            </div>
+            <div class="p-8">
+                <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Event Name</div>
+                <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"> Event Title
+                </a>
+                </a>
+                <div class="mt-4">
+                    <span class="text-gray-500">Category:</span>
+                    <span class="ml-2 text-gray-900 font-medium"> Category </span>
                 </div>
-                <div class="p-8">
-                    <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Event Name</div>
-                    <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"> Event Title </a>
-                    </a>
-                    <div class="mt-4">
-                        <span class="text-gray-500">Category:</span>
-                        <span class="ml-2 text-gray-900 font-medium"> Category </span>
-                    </div>
-                    <div class="mt-4">
-                        <span class="text-gray-500">Type:</span>
-                        <span class="ml-2 text-gray-900 font-medium"> type</span>
-                    </div>
-                    <div class="mt-4">
-                        <span class="text-gray-500">Date & Time:</span>
-                        <span class="ml-2 text-gray-900 font-medium"> datetime </span>
-                    </div>
-                    <div class="mt-4">
-                        <span class="text-gray-500">Location:</span>
-                        <span class="ml-2 text-gray-900 font-medium"> location </span>
-                    </div>
-                    <p class="mt-2 text-gray-500"> description </p>
+                <div class="mt-4">
+                    <span class="text-gray-500">Type:</span>
+                    <span class="ml-2 text-gray-900 font-medium"> type</span>
                 </div>
+                <div class="mt-4">
+                    <span class="text-gray-500">Date & Time:</span>
+                    <span class="ml-2 text-gray-900 font-medium"> datetime </span>
+                </div>
+                <div class="mt-4">
+                    <span class="text-gray-500">Location:</span>
+                    <span class="ml-2 text-gray-900 font-medium"> location </span>
+                </div>
+                <p class="mt-2 text-gray-500"> description </p>
             </div>
         </div>
+    </div>
 
-        <script>
-            // Function to toggle the card visibility
-            function toggleCardVisibility() {
-                var card = document.getElementById('event-card');
-                if (card.style.display === 'none' || card.style.display === '') {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            }
-
-            // Add click event listener to the card
+    <script>
+        // Function to toggle the card visibility
+        function toggleCardVisibility() {
             var card = document.getElementById('event-card');
-            card.addEventListener('click', toggleCardVisibility);
-        </script>
+            if (card.style.display === 'none' || card.style.display === '') {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        }
 
-        
+        // Add click event listener to the card
+        var card = document.getElementById('event-card');
+        card.addEventListener('click', toggleCardVisibility);
+    </script>
+
+
+
+    <!--Flowbite js-->
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+
+    <script src="../JS/admin.js"></script>
 
     <!--Dashboard js-->
     <script>
         // Function to toggle the form visibility
         function toggleFormVisibility() {
-            var form = document.getElementById('event-form');
+            const form = document.getElementById('event-form');
             if (form.style.display === 'none' || form.style.display === '') {
                 form.style.display = 'block';
             } else {
@@ -360,16 +369,11 @@
         }
 
         // Check if the form should be visible on page load
-        var savedFormVisibility = localStorage.getItem('eventFormVisible');
+        const savedFormVisibility = localStorage.getItem('eventFormVisible');
         if (savedFormVisibility === 'block') {
             document.getElementById('event-form').style.display = 'block';
         }
     </script>
-
-    <!--Flowbite js-->
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
 
 </html>

@@ -241,7 +241,6 @@
             </ul>
         </div>
     </aside>
-
     <!-- Main content starts here -->
     <div class="flex items-center justify-center h-screen justify-start overflow-x-hidden"
         style="width: 80%; margin: 0 auto; z-index: 1; margin-left: 20rem;">
@@ -256,22 +255,30 @@
                             <th class="w-1/6 py-2 px-4 bg-gray-100 font-semibold text-left">Phone Number</th>
                             <th class="w-1/4 py-2 px-4 bg-gray-100 font-semibold text-left">Address</th>
                             <th class="w-1/6 py-2 px-4 bg-gray-100 font-semibold text-left">Email</th>
+                            <th class="w-1/6 py-2 px-4 bg-gray-100 font-semibold text-left">Status</th>
                             <th class="w-1/6 py-2 px-4 bg-gray-100 font-semibold text-left">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {{#userData}}
-                        <tr>
+                        <tr id="alumni-{{_id}}">
                             <td class="w-1/6 py-2 px-4 border-b text-black">{{fullName}}</td>
                             <td class="w-1/6 py-2 px-4 border-b">{{yearGroup}}</td>
                             <td class="w-1/6 py-2 px-4 border-b">{{PhoneNumber}}</td>
                             <td class="w-1/4 py-2 px-4 border-b">{{CurrentAddress}}</td>
                             <td class="w-1/6 py-2 px-4 border-b">{{EmailAddress}}</td>
-                            <td class="w-1/6 py-2 px-4 border-b flex">
-                                <button
-                                    class="bg-blue-500 hover-bg-blue-700 text-white py-1 px-2 rounded-md mr-2">Edit</button>
-                                <button
-                                    class="bg-red-500 hover-bg-red-700 text-white py-1 px-2 rounded-md">Delete</button>
+                            <td class="w-1/6 py-2 px-4 border-b">
+                                <select data-alumni-id="{{_id}}" class="status-select pr-4 py-1 border rounded-md">
+                                    <option value="Pending">Pending</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Reject">Reject</option>
+                                </select>
+                            </td>
+                            <td class="w-1/6 py-2 px-4 border-b flex items-center space-x-2">
+                                <button data-user-id="{{_id}}"
+                                    class="read-btn bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-md">View</button>
+                                <button data-alumni-id="{{_id}}"
+                                    class="delete-btn bg-red-500 hover-bg-red-700 text-white py-1 px-2 rounded-md">Remove</button>
                             </td>
                         </tr>
                         {{/userData}}
@@ -280,19 +287,64 @@
             </div>
         </div>
     </div>
+    <!-- Read Alumni Modal -->
+    <div id="readAlumniModal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative p-4 bg-white rounded-lg shadow sm:p-5">
+                <!-- Modal header -->
+                <div class="flex justify-between mb-4 rounded-t sm:mb-5">
+                    <div class="text-lg text-gray-900 md:text-xl dark:text-white">
+                        <h3 class="font-semibold">Alumni Details</h3>
+                    </div>
+                    <div>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-toggle="readAlumniModal">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l 4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                </div>
+                <dl>
+                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Name</dt>
+                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{fullName}}</dd>
+                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Year Group</dt>
+                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{yearGroup}}</dd>
+                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Phone Number</dt>
+                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{PhoneNumber}}</dd>
+                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Address</dt>
+                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{CurrentAddress}}</dd>
+                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Email</dt>
+                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{EmailAddress}}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
 
 
 
- <!--Flowbite js-->
+
+
+
+    <!--Flowbite js-->
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
-    
+    <!--jquery script-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!--Dashboard js-->
     <script>
         // Function to toggle the form visibility
         function toggleFormVisibility() {
-            var form = document.getElementById('event-form');
+            const form = document.getElementById('event-form');
             if (form.style.display === 'none' || form.style.display === '') {
                 form.style.display = 'block';
             } else {
@@ -304,15 +356,74 @@
         }
 
         // Check if the form should be visible on page load
-        var savedFormVisibility = localStorage.getItem('eventFormVisible');
+        const savedFormVisibility = localStorage.getItem('eventFormVisible');
         if (savedFormVisibility === 'block') {
             document.getElementById('event-form').style.display = 'block';
         }
     </script>
 
 
+    <!--AJAX script-->
+    <script>
+        $(document).on("change", ".status-select", function () {
+            const alumniId = $(this).data("alumni-id");
+            const newStatus = $(this).val();
+            handleStatusChange(alumniId, newStatus);
+        });
+        function handleStatusChange(alumniId, newStatus) {
+            const alumniElement = $(`#alumni-${alumniId}`);
 
-   
+            switch (newStatus) {
+                case "Pending":
+                    // Handle pending status UI changes.
+                    alumniElement.css("background-color", "yellow");
+                    break;
+                case "Approved":
+                    // Handle approved status UI changes.
+                    alumniElement.css("background-color", "green");
+                    break;
+                case "Reject":
+                    // Handle reject status UI changes.
+                    alumniElement.css("background-color", "red");
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+
+    <script>
+        // Function to open the "Read User Modal"
+        $(document).on("click", ".read-btn", function () {
+            const userId = $(this).data("user-id");
+            console.log(`View button clicked for user ID: ${userId}`);
+            fetchUserData(userId);
+        });
+        function fetchUserData(userId) {
+            $.ajax({
+                type: "GET",
+                url: `/users/${userId}`,
+                success: function (userData) {
+                    // Populate the modal with user data
+                    $("#readUserModal .modal-title").text(userData.fullName);
+                    $("#readUserModal #fullName").text(userData.fullName);
+                    $("#readUserModal #yearGroup").text(userData.yearGroup);
+                    $("#readUserModal #phoneNumber").text(userData.PhoneNumber);
+                    $("#readUserModal #address").text(userData.CurrentAddress);
+                    $("#readUserModal #email").text(userData.EmailAddress);
+
+                    // Show the modal
+                    $("#readUserModal").removeClass("hidden");
+                },
+                error: function (error) {
+                    console.error("Error fetching user data:", error);
+                }
+            });
+        }
+    </script>
+
+
+
 
 
 </body>

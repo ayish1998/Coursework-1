@@ -259,7 +259,7 @@
                     <tbody>
                         <!-- Example user data, you should replace this with actual user data -->
                         <tr>
-                           
+
                             <td class="py-2 px-4 border-b">
                                 <button
                                     class="bg-blue-500 hover-bg-blue-700 text-white py-1 px-2 rounded-md mr-2">Edit</button>
@@ -268,7 +268,7 @@
                             </td>
                         </tr>
                         <tr>
-                            
+
                             <td class="py-2 px-4 border-b">
                                 <button
                                     class="bg-blue-500 hover-bg-blue-700 text-white py-1 px-2 rounded-md mr-2">Edit</button>
@@ -285,11 +285,18 @@
 
 
 
+    <!--Flowbite js-->
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+
+    <script src="../JS/admin.js"></script>
+
     <!--Dashboard js-->
     <script>
         // Function to toggle the form visibility
         function toggleFormVisibility() {
-            var form = document.getElementById('event-form');
+            const form = document.getElementById('event-form');
             if (form.style.display === 'none' || form.style.display === '') {
                 form.style.display = 'block';
             } else {
@@ -301,19 +308,11 @@
         }
 
         // Check if the form should be visible on page load
-        var savedFormVisibility = localStorage.getItem('eventFormVisible');
+        const savedFormVisibility = localStorage.getItem('eventFormVisible');
         if (savedFormVisibility === 'block') {
             document.getElementById('event-form').style.display = 'block';
         }
     </script>
-    </script>
-
-
-    <!--Flowbite js-->
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
-
 
 </body>
 
