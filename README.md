@@ -1,4 +1,7 @@
-# Ayishatu_Coursework1
+# REPOSITORY LINK
+# https://github.com/ayish1998/Coursework-1
+
+#Ayishatu_Coursework1
 **Coursework Description:**
 
 This coursework project is focused on developing a website for an alumni association or community. The website aims to connect and engage graduates, fostering a strong network for sharing opportunities, events, and valuable knowledge. It serves as a platform where alumni can stay in touch, learn from successful professionals, and contribute to the growth and development of their community.
