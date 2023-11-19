@@ -29,7 +29,7 @@ const landingRoutes = require("./routes/landingRoutes");
 const indexRoutes = require("./routes/indexRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
 const authRoutes = require("./routes/authRoutes");
-const connectRoutes = require("./routes/connectRoutes");
+const eventPageRoutes = require("./routes/eventPageRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 
@@ -60,7 +60,7 @@ app.use("/", landingRoutes);
 app.use("/index", indexRoutes);
 app.use("/about", aboutRoutes);
 app.use("/auth", authRoutes);
-app.use("/connect", connectRoutes);
+app.use("/eventPage", eventPageRoutes);
 app.use("/contact", contactRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/admin", userRoutes); // use user routes"
