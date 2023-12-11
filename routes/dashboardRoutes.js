@@ -25,10 +25,6 @@ router.get("/category", (req, res) => {
   res.sendFile(path.join(__dirname, "../public", "pages", "category.html"));
 });
 
-router.get("/my-event", (req, res) => {
-  // console.log("Request to /register");
-  res.sendFile(path.join(__dirname, "../public", "pages", "my-event.html"));
-});
 
 router.get("/alumni", (req, res) => {
   // console.log("Request to /register");

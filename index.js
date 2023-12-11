@@ -6,10 +6,7 @@ const connectDB = require('./config/util'); // require connectDB
 const flash = require('flash-express'); // require flash
 const session = require('express-session'); // require session
 require('events').EventEmitter.defaultMaxListeners = 15; // or a higher value
-
-
-
-
+const passport = require('passport'); // require passport
 
 
 // Load config
@@ -25,7 +22,6 @@ app.set("view engine", "mustache");
 app.set("views", path.join(__dirname, "views"));
 
 // require routes
-const landingRoutes = require("./routes/landingRoutes");
 const indexRoutes = require("./routes/indexRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
 const authRoutes = require("./routes/authRoutes");
@@ -41,7 +37,7 @@ const eventRoutes = require("./routes/backendroutes/eventRoutes");
 // middleware
 const public = path.join(__dirname, "public");
 app.use(express.static(public));
-// JSON format and URL-encoded data
+// Bodyparser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -50,14 +46,16 @@ app.use(flash());
 
 // session middleware
 app.use(session({
-    secret: 'your-secret-key',
+    secret: '4ce21bff94ea8ecee8add78423bdc1dbe61c20ed865ee65a145ad4eff8ea7ffbc5a8a6ea2ad6dba52f687d43a443d2e684e2c4eeeafc0cae068a485baf86fad2',
     resave: false,
     saveUninitialized: true
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 // views routing
-app.use("/", landingRoutes);
-app.use("/index", indexRoutes);
+app.use("/", indexRoutes);
 app.use("/about", aboutRoutes);
 app.use("/auth", authRoutes);
 app.use("/eventPage", eventPageRoutes);

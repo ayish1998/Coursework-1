@@ -115,7 +115,7 @@
             <nav :class="{'flex': open, 'hidden': !open}"
                 class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row mt-10">
                 <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900  rounded-lg dark-mode:bg-sky-700 dark-mode:hover:bg-blue-100 dark-mode:focus:bg-sky-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-blue-500 focus:text-blue-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                    href="/index">Home</a>
+                    href="/">Home</a>
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
                     <button @click="open = !open"
                         class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-blue-500 focus:text-blue-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
@@ -147,7 +147,7 @@
                 <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-blue-500 focus:text-blue-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="/contact" class="text-black-500">Contact Us</a>
                 <a class="px-4 py-2 mt-2 text-sm font-semibold  rounded-md text-white bg-yellow-400 hover:bg-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-blue-500 focus:text-blue-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                    href="auth/register" class="text-black-500">Register</a>
+                    href="/auth/register" class="text-black-500">Register</a>
                 <a class="px-4 py-2 mt-2 text-sm font-semibold  rounded-md text-white bg-blue-600 hover:bg-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-blue-500 focus:text-blue-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="auth/login" class="text-black-500">Login</a>
             </nav>
@@ -157,61 +157,9 @@
 
 
     <!--Home section starts here-->
-    <!-- <div class="min-h-screen text-gray-900 flex justify-center">
-        <div class="max-w-screen-xl m-0 sm:m-10  shadow sm:rounded-lg flex justify-center flex-1">
-            <div class="flex-1  text-center hidden lg:flex">
-                <img class="h-[80%] w-full" src="../images/loginImage.jpg" alt="">
-            </div>
-            <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-                <h3 class="text-2xl font-medium">
-                    <span class="text-blue-500">MEMBER</span><span class="text-yellow-500"> LOGIN</span>
-                </h3>
-                <div class="mt-12 flex flex-col items-center">
-                    <p class="my-4 text-sm text-gray-600 text-center">
-                        Don't have an account? <a href="/register" class="text-blue-500 hover:underline">Register</a>
-                    </p>
-
-
-                    <div class="mx-auto max-w-xs">
-                        <form>
-                            <input
-                                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                type="email" placeholder="Email" required>
-
-                            <input
-                                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                type="password" placeholder="Password" required>
-
-                            <a href="#" class="text-xs text-blue-500 hover:underline mt-2">Forgot your password?</a>
-
-                            <button
-                                class="mt-5 tracking-wide font-semibold bg-blue-700 text-white w-full py-4 rounded-lg hover:bg-yellow-500 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                                <span class="ml-">
-                                    Login In
-                                </span>
-                            </button>
-                        </form>
-
-                        <p class="mt-6 text-xs text-gray-600 text-center">
-                            I agree to abide by ALUMKONNECT
-                            <a href="#" class="border-b border-gray-500 border-dotted">
-                                Terms of Service
-                            </a>
-                            and its
-                            <a href="#" class="border-b border-gray-500 border-dotted">
-                                Privacy Policy
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div> -->
-
-    <div class="grid grid-cols-2 shadow-lg mx-auto container mt-20 bg-white">
+    <div class="grid grid-cols-2 shadow-lg mx-auto container mt-20 bg-white ">
         <div>
-            <img class="w-full " src="../images/logImage.jpeg" alt="">
+            <img class="w-full" src="../images/logImage.jpeg" alt="">
         </div>
 
         <div class="mt-10">
@@ -226,19 +174,26 @@
             </div>
 
             <div class="mx-auto">
-                <form class="md:w-[50%] mx-auto w-full space-y-8">
-                    <input
+                <form class="md:w-[70%] mx-auto w-full space-y-8" action="/auth/login" method="POST">
+                    <input name="email"
                         class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                         type="email" placeholder="Email" required>
 
-                    <input
+                    <input name="password"
                         class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                         type="password" placeholder="Password" required>
-                    <!-- <span class="absolute  right-5">
-                            <i class="fa regular fa-eye-slash text-primary"></i>
-                        </span>
-     -->
-                    <a href="#" class="text-xs text-blue-500 hover:underline mt-2 ">Forgot your password?</a>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <label for="alumni" class="text-sm text-gray-600">Login as Alumni</label>
+                        <input type="checkbox" id="alumni" name="loginType" value="alumni">
+
+                        <label for="manager" class="text-sm text-gray-600">Login as Manager</label>
+                        <input type="checkbox" id="manager" name="loginType" value="manager">
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="#" class="text-xs text-blue-500 hover:underline">Forgot your password?</a>
+                    </div>
 
                     <button
                         class="mt-5 tracking-wide font-semibold bg-blue-700 text-white w-full py-4 rounded-lg hover:bg-yellow-500 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
@@ -248,17 +203,18 @@
                     </button>
                 </form>
             </div>
-
-            <p class="mt-6 text-xs text-gray-600 text-center">
-                I agree to abide by ALUMKONNECT
-                <a href="#" class="border-b border-gray-500 border-dotted">
-                    Terms of Service
-                </a>
-                and its
-                <a href="#" class="border-b border-gray-500 border-dotted">
-                    Privacy Policy
-                </a>
-            </p>
+            <div class="mt-4">
+                <p class="text-xs text-gray-600 text-center">
+                    I agree to abide by ALUMKONNECT
+                    <a href="#" class="border-b border-gray-500 border-dotted">
+                        Terms of Service
+                    </a>
+                    and its
+                    <a href="#" class="border-b border-gray-500 border-dotted">
+                        Privacy Policy
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
     <!--Script-->

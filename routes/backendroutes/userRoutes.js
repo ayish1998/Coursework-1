@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { createUser, getAllUsers, viewUser, editUser, removeUser,getUserById } = require("../../controllers/userControllers");
+const { createUser, getAllUsers, viewUser, editUser, removeUser, getUserById} = require("../../controllers/userControllers");
 
 // List all users
 router.get("/", getAllUsers);
+
+
 
 // Create a new user
 router.post("/", createUser);
@@ -18,6 +20,7 @@ router.get("/edit/:id", editUser);
 router.get("/remove/:id", removeUser);
 
 router.get("/:userId", getUserById);
+
 
 
 module.exports = router;

@@ -16,7 +16,7 @@ const createEvent = (req, res) => {
         });
 };
 
-// Get all users
+// Get all events
 const getAllEvents = (req, res) => {
     Event.find({})
         .then((events) => {
