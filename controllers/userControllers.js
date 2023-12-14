@@ -3,6 +3,7 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 
+
 // Create a new user
 const createUser = (req, res) => {
     const { fullName, yearGroup, PhoneNumber, CurrentAddress, EmailAddress, Password, password_confirmation } = req.body;
@@ -41,6 +42,7 @@ const createUser = (req, res) => {
 
 
 // Login a user
+// Login a user
 const login = (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) {
@@ -49,7 +51,7 @@ const login = (req, res, next) => {
         }
         if (!user) {
             console.log('User not found');
-            return res.redirect('/auth/login');
+            return res.redirect('/auth/login?error=1');
         }
         req.logIn(user, (err) => {
             if (err) {
@@ -65,7 +67,7 @@ const login = (req, res, next) => {
                 return res.redirect("/alumni-event");
             } else if (req.body.loginType === 'manager') {
                 // Redirect to the manager page
-                return res.redirect('/dashboard');
+                return res.redirect("/dashboard");
             } else {
                 // Default redirection or handle differently
                 return res.redirect('/auth/login');
@@ -73,6 +75,7 @@ const login = (req, res, next) => {
         });
     })(req, res, next);
 };
+
 
 
 // Get all users

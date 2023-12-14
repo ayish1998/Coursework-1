@@ -8,6 +8,20 @@ const session = require('express-session'); // require session
 require('events').EventEmitter.defaultMaxListeners = 15; // or a higher value
 const passport = require('passport'); // require passport
 
+// flash middleware
+app.use(flash());
+
+// session middleware
+app.use(session({
+    secret: '4ce21bff94ea8ecee8add78423bdc1dbe61c20ed865ee65a145ad4eff8ea7ffbc5a8a6ea2ad6dba52f687d43a443d2e684e2c4eeeafc0cae068a485baf86fad2',
+    resave: false,
+    saveUninitialized: true
+}));
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 // Load config
 dotenv.config({ path:'./config/config.env' });
@@ -24,10 +38,12 @@ app.set("views", path.join(__dirname, "views"));
 // require routes
 const indexRoutes = require("./routes/indexRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
+const routes404 = require("./routes/404Routes");
 const authRoutes = require("./routes/authRoutes");
 const eventPageRoutes = require("./routes/eventPageRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const alumniRoutes = require("./routes/alumniRoutes");
 
 // user routes
 const userRoutes = require("./routes/backendroutes/userRoutes");
@@ -41,28 +57,17 @@ app.use(express.static(public));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// flash middleware
-app.use(flash());
-
-// session middleware
-app.use(session({
-    secret: '4ce21bff94ea8ecee8add78423bdc1dbe61c20ed865ee65a145ad4eff8ea7ffbc5a8a6ea2ad6dba52f687d43a443d2e684e2c4eeeafc0cae068a485baf86fad2',
-    resave: false,
-    saveUninitialized: true
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 // views routing
 app.use("/", indexRoutes);
 app.use("/about", aboutRoutes);
+app.use("/404", routes404);
 app.use("/auth", authRoutes);
 app.use("/eventPage", eventPageRoutes);
 app.use("/contact", contactRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/admin", userRoutes); // use user routes"
 app.use("/alumni-event", eventRoutes); // use event routes"
+app.use("/alumni", alumniRoutes);
 
 // Routes
 const PORT = process.env.PORT || 3000;

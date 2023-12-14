@@ -156,17 +156,7 @@
     <!-- second Navbar ends here -->
 
 
-    <!-- Background image section -->
-    <!-- <section class="bg-cover bg-center h-screen flex items-center justify-center"
-        style="background-image: url('https://images.pexels.com/photos/7972744/pexels-photo-7972744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); height: 70%; filter: brightness(0.7);">
-        <div class="text-white text-center">
-            <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
-            <p class="text-lg">
-                We'd love to hear from you. Fill out the form below to get in touch
-                with us.
-            </p>
-        </div>
-    </section> -->
+
 
     <!-- Contact form section -->
     <section class="relative overflow-hidden dark:bg-gray-100 font-poppins">
@@ -179,7 +169,7 @@
                     <div class="w-full px-4 lg:w-3/5">
                         <div
                             class="w-full px-8 py-8 bg-white border rounded-md shadow-md dark:border-gray-800 dark:bg-gray-800 lg:ml-20 lg:max-w-md">
-                            <form action="">
+                            <form action="https://formspree.io/f/xqkvrnvq" method="POST">
                                 <div class="mb-6">
                                     <h2 class="text-xl font-bold text-gray-00 dark:text-gray-400">
                                         Please send message for futher information! </h2>
@@ -188,18 +178,19 @@
                                     <div class="w-full px-2 mb-4 lg:mb-0 lg:w-1/2">
                                         <input
                                             class="w-full px-3 py-2 leading-loose border rounded-md bg-gray-50 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700"
-                                            type="text" placeholder="First Name.." required>
+                                            type="text" name="FirstName" placeholder="First Name.." required>
                                     </div>
                                     <div class="w-full px-2 lg:w-1/2">
                                         <input
                                             class="w-full px-3 py-2 leading-loose border rounded-md bg-gray-50 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700"
-                                            type="text" placeholder="Last Name.." required>
+                                            type="text" name="LastName" placeholder="Last Name.." required>
                                     </div>
                                 </div>
                                 <input
                                     class="w-full px-3 py-2 mb-4 leading-loose border rounded-md bg-gray-50 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700"
                                     type="email" placeholder="alumKonnectinfo@gmail.com" required>
-                                <textarea rows="4" type="message" placeholder="Write a message..." required
+                                <textarea rows="4" type="message" name="message" placeholder="Write a message..."
+                                    required
                                     class="block w-full px-4 mb-4 leading-tight text-gray-700 border rounded bg-gray-50 dark:placeholder-gray-400 py-7 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-700 "></textarea>
                                 <button
                                     class="w-full py-4 text-sm font-bold leading-normal text-white transition-all duration-300 bg-blue-600 rounded-md dark:bg-blue-500 dark:hover:bg-blue-600 hover:bg-blue-700">
@@ -468,10 +459,48 @@
             </div>
         </div>
     </footer>
+    <!-- footer ends here -->
 
+
+    <!-- Scroll to top button -->
+    <button id="to-top-button" onclick="goToTop()" title="Go To Top"
+        class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-yellow-600 hover:bg-blue-700 text-white text-lg font-semibold transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
+        </svg>
+        <span class="sr-only">Go to top</span>
+    </button>
 
     <!--Script-->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+    <!-- Scroll to top button script -->
+    <script>
+        // Get the 'to top' button element by ID
+        var toTopButton = document.getElementById("to-top-button");
+
+        // Check if the button exists
+        if (toTopButton) {
+
+            // On scroll event, toggle button visibility based on scroll position
+            window.onscroll = function () {
+                if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                    toTopButton.classList.remove("hidden");
+                } else {
+                    toTopButton.classList.add("hidden");
+                }
+            };
+
+            // Function to scroll to the top of the page smoothly
+            window.goToTop = function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+        }
+    </script>
 </body>
 
 </html>
