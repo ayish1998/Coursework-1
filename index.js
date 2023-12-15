@@ -13,9 +13,9 @@ app.use(flash());
 
 // session middleware
 app.use(session({
-    secret: '4ce21bff94ea8ecee8add78423bdc1dbe61c20ed865ee65a145ad4eff8ea7ffbc5a8a6ea2ad6dba52f687d43a443d2e684e2c4eeeafc0cae068a485baf86fad2',
-    resave: false,
-    saveUninitialized: true
+	secret: '4ce21bff94ea8ecee8add78423bdc1dbe61c20ed865ee65a145ad4eff8ea7ffbc5a8a6ea2ad6dba52f687d43a443d2e684e2c4eeeafc0cae068a485baf86fad2',
+	resave: false,
+	saveUninitialized: true
 }));
 // passport middleware
 app.use(passport.initialize());
@@ -24,7 +24,11 @@ app.use(passport.session());
 
 
 // Load config
-dotenv.config({ path:'./config/config.env' });
+dotenv.config({
+	path: './config/config.env'
+});
+
+
 
 // Connect to the database
 connectDB();
@@ -50,11 +54,15 @@ const userRoutes = require("./routes/backendroutes/userRoutes");
 // event routes
 const eventRoutes = require("./routes/backendroutes/eventRoutes");
 
+
+
 // middleware
 const public = path.join(__dirname, "public");
 app.use(express.static(public));
 // Bodyparser
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+	extended: false
+}));
 app.use(express.json());
 
 // views routing
@@ -69,10 +77,11 @@ app.use("/admin", userRoutes); // use user routes"
 app.use("/alumni-event", eventRoutes); // use event routes"
 app.use("/alumni", alumniRoutes);
 
+
 // Routes
 const PORT = process.env.PORT || 3000;
 
 // Server start
 app.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+	console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
 });

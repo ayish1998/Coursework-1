@@ -22,15 +22,7 @@ router.get("/community", (req, res) => {
   res.sendFile(path.join(__dirname, "../public", "pages", "community.html"));
 });
 
-router.get("/profile", (req, res) => {
-  // console.log("Request to /register");
-  res.sendFile(path.join(__dirname, "../public", "pages", "profile.html"));
-});
 
-router.get("/setting", (req, res) => {
-  // console.log("Request to /register");
-  res.sendFile(path.join(__dirname, "../public", "pages", "setting.html"));
-});
 
 
 module.exports = router;

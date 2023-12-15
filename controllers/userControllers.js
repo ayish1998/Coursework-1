@@ -2,7 +2,7 @@ const User = require("../models/userModel");
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
-
+const { config } = require('../config/util'); // require connectDB
 
 // Create a new user
 const createUser = (req, res) => {
@@ -11,8 +11,11 @@ const createUser = (req, res) => {
     bcrypt.hash(Password, 10, (err, hashedPassword) => {
         if (err) {
             console.error('Password hashing error');
-            res.status(500).send('Error registering a new account; please try again.');
+           return res.status(500).json({success:false, message: 'Error registering a new account; please try again.'});
         } else {
+            // Set isAdmin to true for the admin user
+            const isAdmin = EmailAddress === config.adminUser.email;
+
             User.create({
                 fullName,
                 yearGroup,
@@ -20,7 +23,8 @@ const createUser = (req, res) => {
                 CurrentAddress,
                 EmailAddress,
                 Password: hashedPassword,
-                password_confirmation
+                password_confirmation,
+                isAdmin,
             })
                 .then(user => {
                     console.log({
@@ -34,14 +38,12 @@ const createUser = (req, res) => {
                     console.error({
                         error: err
                     });
-                    res.status(500).send('Error registering a new account; please try again.');
+                    res.status(500).jsone({succes:false, message:'Error registering a new account; please try again.'});
                 });
         }
     });
 };
 
-
-// Login a user
 // Login a user
 const login = (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
@@ -61,13 +63,19 @@ const login = (req, res, next) => {
 
             console.log('User logged in:', user);
 
+            // Check if the user is an admin
+            if (user.isAdmin) {
+                // Redirect to the admin dashboard
+                return res.redirect("/admin");
+            }
+
             // Redirect based on login type
             if (req.body.loginType === 'alumni') {
                 // Redirect to the alumni event page
                 return res.redirect("/alumni-event");
             } else if (req.body.loginType === 'manager') {
-                // Redirect to the manager page
-                return res.redirect("/dashboard");
+                // Redirect to the manager page (same as admin)
+                return res.redirect("/admin");
             } else {
                 // Default redirection or handle differently
                 return res.redirect('/auth/login');
@@ -75,8 +83,6 @@ const login = (req, res, next) => {
         });
     })(req, res, next);
 };
-
-
 
 // Get all users
 const getAllUsers = (req, res) => {
@@ -124,17 +130,21 @@ const editUser = (req, res) => {
 };
 
 // Remove a user by ID
-const removeUser = (req, res) => {
+const removeUser = async (req, res) => {
     const userId = req.params.id;
-    User.findByIdAndRemove(userId)
-        .then((user) => {
-            console.log(`User ${userId} removed successfully`);
-            res.redirect('/dashboard');
-        })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error removing user');
-        });
+    try {
+        const user = await User.findByIdAndDelete(userId);
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'Error removing user' });
+        }
+        res.status(200).json({ success: true, message: 'User removed successfully' });
+    } catch (error) {
+
+        console.error(err);
+     res.status(500).json({ success: false, message: 'Error removing user' });
+
+    }
 };
 
 // Get user by ID
@@ -143,6 +153,7 @@ const getUserById = (req, res) => {
 
     User.findById(userId)
         .then((userData) => {
+            console.log(userData);
             if (!userData) {
                 return res.status(404).json({
                     error: "User not found"
@@ -184,8 +195,6 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
-
-
 // Use local strategy for authentication
 passport.use(new LocalStrategy({
     usernameField: 'email',
@@ -193,28 +202,39 @@ passport.use(new LocalStrategy({
 }, (email, password, done) => {
     User.findOne({ EmailAddress: email })
         .then(user => {
+            // Log the email of the user
+            console.log('User email:', email);
+
             if (!user) {
                 return done(null, false, { message: 'Incorrect email.' });
             }
 
-            // Log the found user
-            console.log('User found:', user);
-
-            return bcrypt.compare(password, user.Password)
-                .then(passwordMatch => {
-                    if (passwordMatch) {
-                        return done(null, user); // Note: Use the found user, not User
-                    } else {
-                        return done(null, false, { message: 'Incorrect password.' });
-                    }
-                });
+            // Check if the user is an admin
+            if (user.isAdmin) {
+                return bcrypt.compare(password, user.Password)
+                    .then(passwordMatch => {
+                        if (passwordMatch) {
+                            return done(null, user);
+                        } else {
+                            return done(null, false, { message: 'Incorrect password.' });
+                        }
+                    });
+            } else {
+                // For non-admin users, proceed with regular authentication
+                return bcrypt.compare(password, user.Password)
+                    .then(passwordMatch => {
+                        if (passwordMatch) {
+                            return done(null, user);
+                        } else {
+                            return done(null, false, { message: 'Incorrect password.' });
+                        }
+                    });
+            }
         })
         .catch(err => {
             return done(err);
         });
 }));
-
-
 
 
 module.exports = {
@@ -226,4 +246,5 @@ module.exports = {
     removeUser,
     getUserById,
     isAuthenticated
-}; 
+};
+

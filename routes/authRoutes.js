@@ -20,13 +20,13 @@ router.post("/register", createUser);
 
 
 // Validation middleware
-const loginValidation = [
-  check('email').isEmail().withMessage('Invalid email address'),
-  check('password').notEmpty().withMessage('Password is required'),
-];
+// const loginValidation = [
+//   check('email').isEmail().withMessage('Invalid email address'),
+//   check('password').notEmpty().withMessage('Password is required'),
+// ];
 
 // Login a user
-router.post("/login", loginValidation, login);
+router.post("/login", login);
 
 
 

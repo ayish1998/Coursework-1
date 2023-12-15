@@ -16,10 +16,12 @@ router.get("/view/:id", viewUser);
 // Edit a user
 router.get("/edit/:id", editUser);
 
-// Remove a user
-router.get("/remove/:id", removeUser);
+
 
 router.get("/:userId", getUserById);
+
+// Remove a user
+router.delete("/remove/:id", removeUser);
 
 
 
