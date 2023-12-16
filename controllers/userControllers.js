@@ -2,19 +2,18 @@ const User = require("../models/userModel");
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
-const { config } = require('../config/util'); // require connectDB
 
 // Create a new user
 const createUser = (req, res) => {
-    const { fullName, yearGroup, PhoneNumber, CurrentAddress, EmailAddress, Password, password_confirmation } = req.body;
-
+    const { fullName, yearGroup, PhoneNumber, CurrentAddress, EmailAddress, Password } = req.body;
+    console.log(req.body);
     bcrypt.hash(Password, 10, (err, hashedPassword) => {
         if (err) {
+
             console.error('Password hashing error');
-           return res.status(500).json({success:false, message: 'Error registering a new account; please try again.'});
+            return res.status(500).json({ success: false, message: 'Error registering a new account; please try again.' });
         } else {
             // Set isAdmin to true for the admin user
-            const isAdmin = EmailAddress === config.adminUser.email;
 
             User.create({
                 fullName,
@@ -23,23 +22,21 @@ const createUser = (req, res) => {
                 CurrentAddress,
                 EmailAddress,
                 Password: hashedPassword,
-                password_confirmation,
-                isAdmin,
-            })
-                .then(user => {
-                    console.log({
-                        message: 'Registered successfully',
-                        user
-                    });
-                    res.redirect('/auth/login');
-                })
-                .catch(err => {
-                    console.error('An error occurred');
-                    console.error({
-                        error: err
-                    });
-                    res.status(500).jsone({succes:false, message:'Error registering a new account; please try again.'});
+                isAdmin: EmailAddress === "admin@alumnKonnect.com" ? true : false
+            }).then(user => {
+                console.log(user);
+                console.log({
+                    message: 'Registered successfully',
+                    user
                 });
+                res.redirect('/auth/login');
+            }).catch(err => {
+                console.error('An error occurred');
+                console.error({
+                    error: err
+                });
+                res.status(500).json({ succes: false, message: 'Error registering a new account; please try again.' });
+            });
         }
     });
 };
@@ -60,6 +57,9 @@ const login = (req, res, next) => {
                 console.error('Error logging in user:', err);
                 return next(err);
             }
+
+            // Store user ID in session
+            req.session.userId = user.id;
 
             console.log('User logged in:', user);
 
@@ -84,6 +84,7 @@ const login = (req, res, next) => {
     })(req, res, next);
 };
 
+
 // Get all users
 const getAllUsers = (req, res) => {
     User.find({})
@@ -92,8 +93,7 @@ const getAllUsers = (req, res) => {
             res.render("dashboard", {
                 userData: users
             });
-        })
-        .catch((err) => {
+        }).catch((err) => {
             console.error(err);
             res.status(500).send('Error retrieving data');
         });
@@ -140,12 +140,13 @@ const removeUser = async (req, res) => {
         }
         res.status(200).json({ success: true, message: 'User removed successfully' });
     } catch (error) {
-
-        console.error(err);
-     res.status(500).json({ success: false, message: 'Error removing user' });
-
+        console.error(error);  // Corrected from "err"
+        res.status(500).json({ success: false, message: 'Error removing user' });
     }
 };
+
+
+
 
 // Get user by ID
 const getUserById = (req, res) => {

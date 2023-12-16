@@ -46,7 +46,7 @@
                   </div>
                   <ul class="py-1" role="none">
                     <li>
-                      <a href="/alumni/alumniProfile
+                      <a href="/alumni/alumniProfile"
                                         class=" block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:text-black dark:hover:bg-gray-100 dark:hover:text-black" role="menuitem">Profile</a>
                     </li>
                     <li>
@@ -125,8 +125,8 @@
             </a>
           </li>
           <li>
-            <a href="/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-black hover:bg-gray-100 dark:hover:bg-gray-100 group">
-              <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-blackgroup-hover:text-gray-900 dark:group-hover:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 16">
+            <a href="/auth/logout" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-black hover:bg-gray-100 dark:hover:bg-gray-100 group">
+              <svg class="flex-shrink-0 w-5 h-5 text-gray-900 transition duration-75 dark:text-blackgroup-hover:text-gray-900 dark:group-hover:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 16">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"></path>
               </svg>
               <span class="flex-1 ml-3 whitespace-nowrap">Log Out</span>
@@ -136,6 +136,13 @@
       </div>
     </aside>
     <!--Main content starts here-->
+   
+
+
+
+
+
+
     <div class="flex">
       <div class="w-3/4 p-[18rem]">
         <!-- Left section for user posts and comments -->
@@ -270,5 +277,18 @@
         document.getElementById('event-form').style.display = 'block';
       }
     </script>
+
+<script>
+  (function(d, w, c) {
+      w.ChatraID = '2yBdmE3GdP2bAjLWc';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+          (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+  })(document, window, 'Chatra');
+</script>
   </body>
 </html>

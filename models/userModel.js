@@ -26,10 +26,6 @@ const userSchema = new Schema({
    type: String,
    required: true
  },
- password_confirmation: {
-   type: String,
-   required: true
- },
  isAdmin: {
    type: Boolean,
    default: false
