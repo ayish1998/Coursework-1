@@ -187,22 +187,55 @@
         <!-- Add new alumni form -->
         <div class="container mx-auto my-8 p-8 bg-white dark:bg-sky-200 shadow-md rounded-md">
             <h2 class="text-2xl font-semibold mb-4">Add New Alumni</h2>
-            <form id="addAlumniForm" action="/admin/create/" method="POST">
-                <!-- You can customize the form fields based on your alumni details -->
+            <!-- Button to toggle the form visibility -->
+            <button id="toggleFormBtn"
+                class="px-4 py-2 mb-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                Add New Alumni
+            </button>
+            <form id="addAlumniForm" action="admin/create" method="POST">
                 <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Name:</label>
-                    <input type="text" id="name" name="name" required
+                    <label for="fullName" class="block text-sm font-medium text-black dark:text-black ">Name:</label>
+                    <input type="text" id="fullName" name="fullName" required
                         class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
                 </div>
 
                 <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-gray-600 dark:text-gray-300">Email:</label>
-                    <input type="email" id="email" name="email" required
+                    <label for="yearGroup" class="block text-sm font-medium text-black dark:text-black">Year
+                        Group:</label>
+                    <input type="text" id="yearGroup" name="yearGroup" required
+                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                </div>
+                <div class="mb-4">
+                    <label for="PhoneNumber" class="block text-sm font-medium text-black dark:text-black">Phone
+                        Number:</label>
+                    <input type="text" id="PhoneNumber" name="PhoneNumber" required
+                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                </div>
+                <div class="mb-4">
+                    <label for="EmailAddress" class="block text-sm font-medium text-black dark:text-black">Email
+                        Address:</label>
+                    <input type="email" id="EmailAddress" name="EmailAddress" required
                         class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
                 </div>
 
+                <div class="mb-4">
+                    <label for="CurrentAddress" class="block text-sm font-medium text-black dark:text-black">Current
+                        Address:</label>
+                    <input type="text" id="CurrentAddress" name="CurrentAddress" required
+                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                </div>
+                <div class="mb-4">
+                    <label for="Password" class="block text-sm font-medium text-black dark:text-black">Password:</label>
+                    <input type="Password" id="Password" name="Password" required
+                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                </div>
+                <div class="mb-4">
+                    <label for="ConfirmPassword" class="block text-sm font-medium text-black dark:text-black">Confirm
+                        Password:</label>
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" required
+                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                </div>
                 <!-- Add more fields as needed -->
-
                 <div class="flex items-center justify-end">
                     <button type="button" id="submitBtn"
                         class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
@@ -243,10 +276,70 @@
                                     class="read-btn bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-md">View</button>
                                 <button data-user-id="{{_id}}"
                                     class="delete-btn bg-red-500 hover-bg-red-700 text-white py-1 px-2 rounded-md">Remove</button>
+                                <button data-user-id="{{_id}}"
+                                    class="EditFormBtn bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-md">
+                                    Edit
+                                </button>
 
                             </td>
                         </tr>
                         {{/isAdmin}}
+                        <!--Edit alumi details-->
+                        <div class="hidden" id="editAlumniForm">
+                            <form action="admin/edit/{{_id}}" method="POST">
+                                <!-- You can customize the form fields based on your alumni details -->
+                                <div class="mb-4">
+                                    <label for="fullName"
+                                        class="block text-sm font-medium text-black dark:text-black ">Name:</label>
+                                    <input type="text" id="fullName" name="fullName" value="{{fullName}}" required
+                                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="yearGroup"
+                                        class="block text-sm font-medium text-black dark:text-black">Year
+                                        Group:</label>
+                                    <input type="text" id="yearGroup" name="yearGroup" value="{{yearGroup}}" required
+                                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="PhoneNumber"
+                                        class="block text-sm font-medium text-black dark:text-black">Phone
+                                        Number:</label>
+                                    <input type="text" id="PhoneNumber" name="PhoneNumber" value="{{PhoneNumber}}"
+                                        required
+                                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="EmailAddress"
+                                        class="block text-sm font-medium text-black dark:text-black">Email
+                                        Address:</label>
+                                    <input type="email" id="EmailAddress" name="EmailAddress" value="{{EmailAddress}}"
+                                        required
+                                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="CurrentAddress"
+                                        class="block text-sm font-medium text-black dark:text-black">Current
+                                        Address:</label>
+                                    <input type="text" id="CurrentAddress" name="CurrentAddress"
+                                        value="{{CurrentAddress}}" required
+                                        class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                                </div>
+                                <div class="flex items-center justify-end">
+                                    <button type="submit" id="submitEditBtn"
+                                        class="px-4 py-2 mb-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                                        Update Alumni
+                                    </button>
+
+                                    <button type="button" id="closeEditBtn"
+                                        class="px-4 py-2 mb-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                                        Close
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
 
                         {{/userData}}
                     </tbody>
@@ -300,8 +393,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     <!--jquery script-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
 
     <!--Dashboard js-->
     <script>
@@ -387,19 +478,95 @@
             }
         }
     </script>
-    
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Add an event listener to the form
-        document.getElementById('submitBtn').addEventListener('click', function () {
-            // Perform any client-side validation if needed
+    <!-- function to open the add alumni modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add an event listener to the button for toggling form visibility
+            document.getElementById('toggleFormBtn').addEventListener('click', function () {
+                // Toggle the "hidden" class on the form
+                document.getElementById('addAlumniForm').classList.toggle('hidden');
+            });
 
-            // Submit the form using JavaScript
-            document.getElementById('addAlumniForm').submit();
+            // Optionally, you can add an event listener to hide the form when it's submitted
+            document.getElementById('addAlumniForm').addEventListener('submit', function () {
+                // Hide the form after submission
+                document.getElementById('addAlumniForm').classList.add('hidden');
+            });
         });
-    });
-</script>
+    </script>
+
+
+    <!-- function to open the edit modal -->
+    <script>
+        $(document).ready(function () {
+            let userId; // Define userId variable in a scope accessible to both functions
+
+            // Function to open the "Edit User Modal"
+            $(document).on("click", ".EditFormBtn", function () {
+                userId = $(this).data("user-id");
+                console.log(`Edit button clicked for user ID: ${userId}`);
+                fetchUserData(userId, true); // Pass true to indicate edit mode
+            });
+
+            // Event listener for the update button in the edit form
+            $(document).on("click", "#submitEditBtn", function () {
+                updateAlumni(userId);
+            });
+
+            // Event listener for the close button in the edit form
+            $(document).on("click", "#closeEditBtn", function () {
+                closeEditForm();
+            });
+
+            function fetchUserData(userId, isEditMode) {
+                $.ajax({
+                    type: "GET",
+                    url: `/admin/${userId}`,
+                    success: function (userData) {
+                        // Populate the modal with user data
+                        // ...
+
+                        // If in edit mode, show the edit form and hide the read modal
+                        if (isEditMode) {
+                            $("#readAlumniModal").addClass("hidden");
+                            $("#editAlumniForm").removeClass("hidden");
+                        }
+                    },
+                    error: function (error) {
+                        console.error("Error fetching user data:", error);
+                    }
+                });
+            }
+
+            function updateAlumni(userId) {
+                const formData = $("#editAlumniForm form").serialize();
+                console.log(formData);
+                $.ajax({
+                    type: "POST",
+                    url: `/admin/edit/${userId}`,
+                    data: formData,
+                    success: function (response) {
+                        console.log("Update successful:", response);
+                        closeEditForm();
+                        // Your other success handling code
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error updating alumni:", xhr, status, error);
+                    }
+                });
+            }
+
+            function closeEditForm() {
+                // Add any additional logic for closing the edit form
+                $("#editAlumniForm").addClass("hidden");
+                // Show the read modal or perform other actions as needed
+                $("#readAlumniModal").removeClass("hidden");
+            }
+        });
+
+    </script>
+
 </body>
 
 </html>

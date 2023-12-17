@@ -15,7 +15,7 @@ router.post("/create", createUser);
 router.get("/view/:id", viewUser);
 
 // Edit a user
-router.post("/edit/:id", editUser);
+router.post("/edit/:id/", editUser);
 
 
 

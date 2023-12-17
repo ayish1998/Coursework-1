@@ -9,4 +9,12 @@ router.get("/", (req, res) => {
 router.get("/singleEvent", (req, res) => {
   res.sendFile(path.join(__dirname, "../public", "pages", "singleEvent.html"));
 });
+
+router.get("/professional", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public", "pages", "professionalEvent.html"));
+});
+
+router.get("/networking", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public", "pages", "networkingEvent.html"));
+});
 module.exports = router;

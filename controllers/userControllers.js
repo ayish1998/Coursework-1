@@ -63,26 +63,20 @@ const login = (req, res, next) => {
 
             console.log('User logged in:', user);
 
-            // Check if the user is an admin
             if (user.isAdmin) {
-                // Redirect to the admin dashboard
-                return res.redirect("/admin");
-            }
-
-            // Redirect based on login type
-            if (req.body.loginType === 'alumni') {
-                // Redirect to the alumni event page
-                return res.redirect("/alumni-event");
-            } else if (req.body.loginType === 'manager') {
-                // Redirect to the manager page (same as admin)
+                // Redirect to the admin dashboard if the user is an admin
                 return res.redirect("/admin");
             } else {
-                // Default redirection or handle differently
-                return res.redirect('/auth/login');
+                // Redirect to the alumni event page for non-admin users
+                return res.redirect("/alumni-event");
             }
         });
     })(req, res, next);
 };
+
+
+
+
 
 
 // Get all users
@@ -117,17 +111,44 @@ const viewUser = (req, res) => {
 // Edit a user by ID
 const editUser = (req, res) => {
     const userId = req.params.id;
-    User.findById(userId)
-        .then((user) => {
-            res.render("edit-user", {
-                user
+    const { fullName, yearGroup, PhoneNumber, CurrentAddress, EmailAddress } = req.body;
+
+    // Find the user by ID and update the fields
+    User.findByIdAndUpdate(userId, {
+        fullName,
+        yearGroup,
+        PhoneNumber,
+        CurrentAddress,
+        EmailAddress,
+    }, { new: true, select: '-Password' }) // Exclude the Password field
+        .then(updatedUser => {
+            if (!updatedUser) {
+                // If the user is not found, return an error
+                return res.status(404).json({ success: false, message: 'User not found.' });
+            }
+
+            console.log('User updated successfully:', updatedUser);
+            // Return the updated user without the Password field
+            res.status(200).json({
+                success: true,
+                message: 'User updated successfully',
+                user: {
+                    _id: updatedUser._id,
+                    fullName: updatedUser.fullName,
+                    yearGroup: updatedUser.yearGroup,
+                    PhoneNumber: updatedUser.PhoneNumber,
+                    CurrentAddress: updatedUser.CurrentAddress,
+                    EmailAddress: updatedUser.EmailAddress,
+                    // Exclude the Password field here
+                }
             });
         })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error retrieving user data for editing');
+        .catch(err => {
+            console.error('Error updating user:', err);
+            res.status(500).json({ success: false, message: 'Error updating user.' });
         });
 };
+
 
 // Remove a user by ID
 const removeUser = async (req, res) => {

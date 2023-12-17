@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="icon" href="../images/AlumKonnect.png" />
     <title>AlumKonnect Website</title>
     <!--Tailwind css files-->
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="../css/style.css">
     <!-- CDN for Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/?plugins=forms"></script>
     <!--Font awesome cdn-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <!--Flowbite css files-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -84,7 +87,9 @@
     <section class="shadow-lg bg-sky-100 dark-mode:text-gray-200 dark-mode:bg-gray-800 h-32 text-4xl">
         <div class="max-w-6xl px-4 mx-auto" x-data="{open:false}">
             <div class="relative flex items-center justify-between py-6">
-                <a href="#" class="text-3xl font-semibold leading-none dark:text-gray-400">
+                <a href="/" class="flex items-center text-3xl font-semibold leading-none dark:text-gray-400">
+                    <!-- Add your logo image here -->
+                    <img src="../images/AlumKonnect.png" alt="Your Logo" class="mr-2" width="40" height="40">
                     <span class="text-blue-500">ALUM</span>
                     <span class="text-yellow-500">KONNECT</span>
                 </a>
@@ -173,6 +178,7 @@
             </div>
         </div>
     </section>
+    <!-- second Navbar ends here -->
     <!-- Home section starts here bg-yellow-400 -->
     <div class="relative h-screen w-full flex items-center justify-center text-center bg-cover bg-center h-[80%]"
         style="background-image:url(https://images.pexels.com/photos/8106665/pexels-photo-8106665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);">
@@ -464,7 +470,7 @@
                             <div class="card bg-blue-500 text-white p-4">
                                 <div class="su-event_date">
                                     <div class="su-event_date-day text-5xl">05</div>
-                                    <div class="su-event_date-month text-yellow-400 text-5xl">Jan</div>
+                                    <div class="su-event_date-month text-yellow-400 text-5xl">April</div>
                                     <div class="su-event_date-year text-5xl">2025</div>
                                 </div>
                             </div>
@@ -717,28 +723,41 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Countdown Timer -->
     <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+        // Set the date we're counting down to (90 days from now)
+        var countDownDate = new Date();
+        countDownDate.setDate(countDownDate.getDate() + 90);
+
+        // Extract year, month, and day
+        var year = countDownDate.getFullYear();
+        // Adding 1 to month because JavaScript months are 0-indexed
+        var month = countDownDate.getMonth() + 1;
+        var day = countDownDate.getDate();
+
         // Update the count down every 1 second
         var countdownfunction = setInterval(function () {
-            // Get todays date and time
+            // Get today's date and time
             var now = new Date().getTime();
-            // Find the distance between now an the count down date
+            // Find the distance between now and the count down date
             var distance = countDownDate - now;
-            // Time calculations for days, hours, minutes and seconds
+            // Time calculations for days, hours, minutes, and seconds
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
             // Output the result in an element with id="demo"
-            document.getElementById("demo").innerHTML = days + "days: " + hours + "hours: " + minutes + "minutes: " + seconds + "seconds ";
+            document.getElementById("demo").innerHTML = days + " days: " + hours + " hours: " + minutes + " minutes: " + seconds + " seconds ";
             // If the count down is over, write some text 
             if (distance < 0) {
                 clearInterval(countdownfunction);
                 document.getElementById("demo").innerHTML = "EXPIRED";
             }
         }, 1000);
+
+        // Display the final date
+        document.getElementById("finalDate").innerHTML = "Final date: " + year + "-" + month + "-" + day;
     </script>
+
+
     <!-- Scroll to top button script -->
     <script>
         // Get the 'to top' button element by ID

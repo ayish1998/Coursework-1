@@ -8,7 +8,6 @@ const userSchema = new Schema({
  },
  yearGroup: {
    type: String,
-   required: true
  },
  PhoneNumber: {
    type: String,
@@ -31,5 +30,6 @@ const userSchema = new Schema({
    default: false
  }
 });
+
 
 module.exports = mongoose.model("User", userSchema);
