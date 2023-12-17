@@ -12,7 +12,6 @@ const { isAuthenticated } = require('./middleware/authenticate');
 // flash middleware
 app.use(flash());
 
-
 // session middleware
 app.use(session({
 	secret: '4ce21bff94ea8ecee8add78423bdc1dbe61c20ed865ee65a145ad4eff8ea7ffbc5a8a6ea2ad6dba52f687d43a443d2e684e2c4eeeafc0cae068a485baf86fad2',
@@ -23,8 +22,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 // Load config
 dotenv.config({
 	path: './config/config.env'
@@ -32,7 +29,6 @@ dotenv.config({
 
 // Connect to the database
 connectDB();
-
 
 // require mustache
 const mustache = require("mustache-express");
