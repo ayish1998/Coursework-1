@@ -5,7 +5,6 @@ const dotenv = require('dotenv'); // require dotenv
 const connectDB = require('./config/util'); // require connectDB
 const flash = require('flash-express'); // require flash
 const session = require('express-session'); // require session
-const MongoDBStore = require('connect-mongodb-session')(session); // require MongoDBStore
 require('events').EventEmitter.defaultMaxListeners = 15; // or a higher value
 const passport = require('passport'); // require passport
 const { isAuthenticated } = require('./middleware/authenticate');
@@ -13,27 +12,11 @@ const { isAuthenticated } = require('./middleware/authenticate');
 // flash middleware
 app.use(flash());
 
-// Create a new MongoDBStore
-const store = new MongoDBStore({
-	uri: process.env.MONGODB_URI,
-	collection: 'sessions',
-	expires: 1000 * 60 * 60 * 24 * 7,
-});
-
-// Catch errors on the store
-store.on('error', function (error) {
-	console.log(error);
-});
-
 // session middleware
 app.use(session({
 	secret: '4ce21bff94ea8ecee8add78423bdc1dbe61c20ed865ee65a145ad4eff8ea7ffbc5a8a6ea2ad6dba52f687d43a443d2e684e2c4eeeafc0cae068a485baf86fad2',
 	resave: false,
 	saveUninitialized: true,
-	store: store,
-	cookie: {
-		maxAge: 1000 * 60 * 60 * 24 * 7,
-	},
 }));
 // passport middleware
 app.use(passport.initialize());
