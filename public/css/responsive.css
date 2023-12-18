@@ -56,4 +56,10 @@
         width: -webkit-fill-available;
 
     }
+
+
+    /* Event Page */
+    .event-card {
+        padding: 20px;
+    }
 }
