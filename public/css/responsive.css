@@ -62,4 +62,22 @@
     .event-card {
         padding: 20px;
     }
+
+
+    /* About page */
+    .home_section-content {
+        color: #fff !important;
+    }
+
+    .home_section-content h1 {
+        color: #fff;
+    }
+
+    .about-section {
+        padding: 20px;
+    }
+
+    .faq-section {
+        padding: 20px;
+    }
 }
