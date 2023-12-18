@@ -1,0 +1,59 @@
+
+@media (max-width: 768px) {
+    .top_first-nav {
+        flex-direction: column;
+    }
+
+    .top-contact {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .top-contact a {
+        width: auto !important;
+    }
+
+    .about_us-section {
+        margin: 20px;
+    }
+
+    .video-container {
+        padding: 10px;
+    }
+
+    .stats-card {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .upcoming-section {
+        padding: 10px !important;
+    }
+
+    .upcoming-card {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .upcoming-card .organizer {
+        font-size: 21px;
+    }
+
+    .upcoming-card .heading {
+        font-size: 32px;
+    }
+
+    .timer-counter .ml-20 {
+        margin-left: 8px;
+    }
+
+    .timer-counter #demo {
+        font-size: 20px;
+    }
+
+    .upcoming-card .date-card .card {
+        margin: 0 !important;
+        width: -webkit-fill-available;
+
+    }
+}
