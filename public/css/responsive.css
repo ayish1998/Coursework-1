@@ -1,7 +1,10 @@
-
+.top_first-nav {
+    padding: 8px 17rem !important;
+}
 @media (max-width: 768px) {
     .top_first-nav {
         flex-direction: column;
+        padding: 20px !important;
     }
 
     .top-contact {
